@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+	<changeSet id="1" author="chandra">
+		<createTable tableName="gender_types">
+			<column name="id" type="integer" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="gender_type" type="varchar(255)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="2" author="chandra">
+		<createTable tableName="category_types">
+			<column name="id" type="integer" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="category_type" type="varchar(255)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="3" author="chandra">
+		<createTable tableName="admission">
+			<column name="id" type="bigint" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="date_of_admission" type="TIMESTAMP">
+				<constraints nullable="false" />
+
+			</column>
+			<column name="name" type="varchar(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="date_of_birth" type="date">
+				<constraints nullable="false" />
+			</column>
+			<column name="gender" type="INTEGER">
+				<constraints nullable="false" />
+			</column>
+			<column name="category" type="INTEGER">
+				<constraints nullable="false" />
+			</column>
+			<column name="system" type="varchar(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="source_system_name" type="varchar(255)">
+			</column>
+			
+		</createTable>
+	</changeSet>
+
+	<changeSet author="chandra"
+		id="add_foreign_key__admission">
+		<addForeignKeyConstraint baseColumnNames="gender"
+			baseTableName="admission" constraintName="fk_admission_gender_types"
+			referencedColumnNames="id" referencedTableName="gender_types"
+			onDelete="CASCADE" onUpdate="CASCADE" />
+	</changeSet>
+	<changeSet author="chandra"
+		id="add_foreign_key_category_admission">
+		<addForeignKeyConstraint
+			baseColumnNames="category" baseTableName="admission"
+			constraintName="fk_admission_category_types"
+			referencedColumnNames="id" referencedTableName="category_types"
+			onDelete="CASCADE" onUpdate="CASCADE" />
+	</changeSet>
+
+	<changeSet id="insert-" author="chandra">
+		<sql>
+			INSERT INTO gender_types (gender_type) VALUES ('Male');
+			INSERT INTO
+			gender_types (gender_type) VALUES ('Female');
+			INSERT INTO gender_types
+			(gender_type) VALUES ('Intersex');
+			INSERT INTO gender_types (gender_type)
+			VALUES ('Unknown');
+		</sql>
+	</changeSet>
+	<changeSet id="insert-category" author="chandra">
+		<sql>
+			INSERT INTO category_types (category_type) VALUES ('Normal');
+			INSERT INTO category_types (category_type) VALUES ('Inpatient');
+			INSERT INTO category_types (category_type) VALUES ('Emergency');
+			INSERT INTO category_types (category_type) VALUES ('Outpatient');
+		</sql>
+	</changeSet>
+	<changeSet id="insert-admission" author="chandra">
+		<sql>
+			INSERT INTO admission (DATE_OF_ADMISSION, name, date_of_birth,
+			gender, category, system)
+			VALUES
+			(PARSEDATETIME('02/05/2023 14:30','dd/MM/yyyy HH:mm'), 'Chandra Debnath',
+			PARSEDATETIME('02/05/1975','dd/MM/yyyy'), 2, 1, 'Internal'),
+			(PARSEDATETIME('03/05/2023 10:45','dd/MM/yyyy HH:mm'), 'John Doe',
+			PARSEDATETIME('15/11/1980','dd/MM/yyyy'), 1, 2, 'Internal'),
+			(PARSEDATETIME('04/05/2023 15:20','dd/MM/yyyy HH:mm'), 'Jane Smith',
+			PARSEDATETIME('22/09/1995','dd/MM/yyyy'), 2, 3, 'Internal');
+		</sql>
+	</changeSet>
+
+</databaseChangeLog>
