@@ -40,3 +40,17 @@ To run the untit test cases only, please run the below command
 ```
 mvn test
 ```
+
+
+**Curl command for the external admission record creation**
+
+curl --location --request POST 'http://localhost:8080/promed/api/v1/ext/admission' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "dateOfAdmission": "",
+    "name": "External Record",
+    "dateOfBirth": "04/05/1984",
+    "categoryId":1,
+    "genderId":1,
+    "sourceSystemName": "Sunshine Hospital"
+}'
