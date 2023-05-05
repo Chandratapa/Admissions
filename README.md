@@ -1,6 +1,7 @@
 # Admissions
-# Project Name 
-Admissions
+# Project Name "Admissions" 
+
+Assumptions:- The back-end is running at 8080 port and the front-end at 3000.
 
 #Description
 The application allows to perform CRUD operations realated to Admission records. 
@@ -44,13 +45,7 @@ mvn test
 
 **Curl command for the external admission record creation**
 
-curl --location --request POST 'http://localhost:8080/promed/api/v1/ext/admission' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "dateOfAdmission": "",
-    "name": "External Record",
-    "dateOfBirth": "04/05/1984",
-    "categoryId":1,
-    "genderId":1,
-    "sourceSystemName": "Sunshine Hospital"
-}'
+curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" -d "{\"dateOfAdmission\":\"\",\"name\":\"gdggdeyrgeyeritirythjvdhfggskhgfurghoreugergoh\",\"dateOfBirth\":\"04/05/1984\",\"categoryId\":1,\"genderId\":1,\"sourceSystemName\":\"Sunshine Hospital 3\"}" http://localhost:8080/promed/api/v1/ext/admission
+
+(for windows cmd)
+
