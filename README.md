@@ -19,7 +19,7 @@ Lombok 1.18.x
 
 Add the lombok jar to your classpath
 
-Run the below command from the roor directory of the Taps projcet to install dependencies required for the Taps project to run
+Run the below command from the roor directory of the "admission" projcet to install dependencies required for the Taps project to run
 ```
 mvn clean install
 ```
@@ -27,7 +27,7 @@ mvn clean install
 ## Running the application locally
 
 
-There are several ways to run a Spring Boot application on your local machine. One way is to execute the `main` method in the `com.littlepay.taps.TapsApplication` class from your IDE.
+There are several ways to run a Spring Boot application on your local machine. One way is to execute the `main` method in the `com.promed.admission.AdmissionApplication` class from your IDE.
 
 Alternatively you can use the [Spring Boot Maven plugin](https://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-maven-plugin.html) like so:
 and run the below command from the root directory of the "admission" project
